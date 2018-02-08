@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using CasualClans.Data;
 using CasualClans.Models;
 using CasualClans.Services;
+using CasualClans.Data.Models;
 
 namespace CasualClans
 {

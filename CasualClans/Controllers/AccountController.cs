@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using CasualClans.Models;
 using CasualClans.Models.AccountViewModels;
 using CasualClans.Services;
+using CasualClans.Data.Models;
 
 namespace CasualClans.Controllers
 {
