@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans", "CasualClans\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans.Data", "CasualClans.Data\CasualClans.Data.csproj", "{CE15AE90-49C0-486B-94BF-A4E29527ABC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans.Service", "CasualClans.Service\CasualClans.Service.csproj", "{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CE15AE90-49C0-486B-94BF-A4E29527ABC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE15AE90-49C0-486B-94BF-A4E29527ABC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE15AE90-49C0-486B-94BF-A4E29527ABC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
