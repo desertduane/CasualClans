@@ -12,6 +12,7 @@ using CasualClans.Data;
 using CasualClans.Models;
 using CasualClans.Services;
 using CasualClans.Data.Models;
+using CasualClans.Service;
 
 namespace CasualClans
 {
@@ -36,7 +37,7 @@ namespace CasualClans
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
+            services.AddScoped<IForum, ForumService>();
             services.AddMvc();
         }
 

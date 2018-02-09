@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CasualClans.Data\CasualClans.Data.csproj" />
+    <ProjectReference Include="..\CasualClans.Service\CasualClans.Service.csproj" />
   </ItemGroup>
 
 </Project>
