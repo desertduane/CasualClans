@@ -12,6 +12,7 @@ namespace CasualClans.Controllers
     public class ForumController : Controller
     {
         private readonly IForum _forumService;
+        private readonly IPost _postService;
 
         public ForumController(IForum forumService)
         {
@@ -33,6 +34,14 @@ namespace CasualClans.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult Topic(int Id)
+        {
+            var forum = _forumService.GetById(Id);
+            var posts = _postService.GetFilteredPosts(Id);
+
+            var postListings = 
         }
     }
 }
