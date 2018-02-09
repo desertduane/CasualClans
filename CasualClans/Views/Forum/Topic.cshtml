@@ -10,7 +10,9 @@
             {
                 <tr>
                     <td>
-                        @post.Title
+                        <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                            @post.Title
+                        </a>
                     </td>
                     <td>
                         @post.AuthorName
@@ -32,7 +34,7 @@ else
 {
     <div class="noPosts">
         <h3>
-            It looks like there are no @Model.Forum.Name posts yet <br/>
+            It looks like there are no @Model.Forum.Name posts yet <br />
             Why not
             <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Forum.Id">
                 <span>create</span>

@@ -1,5 +1,6 @@
 ﻿using CasualClans.Data;
 using CasualClans.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,11 @@ namespace CasualClans.Service
 
         public Post GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _context.Posts.Where(post => post.Id == Id)
+                .Include(post => post.User)
+                .Include(post => post.Replies).ThenInclude(reply => reply.User)
+                .Include(post => post.Forum)
+                .First();
         }
 
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
