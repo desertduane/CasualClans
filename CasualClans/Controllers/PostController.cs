@@ -77,12 +77,14 @@ namespace CasualClans.Controllers
 
         private Post BuildPost(NewPostModel model, ApplicationUser user)
         {
+            var forum = _forumService.GetById(model.ForumId);
             return new Post
             {
                 Title = model.Title,
                 Content = model.Content,
                 Created = DateTime.Now,
-                User = user
+                User = user,
+                Forum = forum
             };
         }
 
