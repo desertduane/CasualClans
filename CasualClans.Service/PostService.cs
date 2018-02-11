@@ -59,6 +59,11 @@ namespace CasualClans.Service
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Post> GetLatestPosts(int n)
+        {
+            return GetAll().OrderByDescending(post => post.Created).Take(n);
+        }
+
         public IEnumerable<Post> GetPostsByForum(int Id)
         {
             return _context.Forums.Where(forum => forum.Id == Id).First()
