@@ -6,6 +6,7 @@ using CasualClans.Data;
 using CasualClans.Data.Models;
 using CasualClans.Models.Forum.Reply;
 using CasualClans.Models.Post;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CasualClans.Controllers
@@ -13,10 +14,15 @@ namespace CasualClans.Controllers
     public class PostController : Controller
     {
         private readonly IPost _postService;
+        private readonly IForum _forumService;
 
-        public PostController(IPost postService)
+        private static UserManager<ApplicationUser> _userManager;
+
+        public PostController(IPost postService, IForum forumService, UserManager<ApplicationUser> userManager)
         {
             _postService = postService;
+            _forumService = forumService;
+            _userManager = userManager;
         }
 
         public IActionResult Index(int Id)
@@ -35,9 +41,53 @@ namespace CasualClans.Controllers
                 AuthorRating = post.User.Rating,
                 Created = post.Created,
                 PostContent = post.Content,
-                Replies = replies
+                Replies = replies,
+                ForumId = post.Forum.Id,
+                ForumName = post.Forum.Title
             };
             return View(model);
+        }
+
+        public IActionResult Create(int Id)
+        {
+            //Id is Forum.Id
+            var forum = _forumService.GetById(Id);
+            var model = new NewPostModel
+            {
+                ForumName = forum.Title,
+                ForumId = forum.Id,
+                ForumImageUrl = forum.ImageUrl,
+                AuthorName = User.Identity.Name
+
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPost(NewPostModel model)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.FindByIdAsync(userId).Result;
+            var post = BuildPost(model, user);
+
+            await _postService.Add(post);
+
+            //TODO Impliment user rating managment here
+
+            return RedirectToAction("Index", "Post", new { id = post.Id });
+        }
+
+        private Post BuildPost(NewPostModel model, ApplicationUser user)
+        {
+            var forum = _forumService.GetById(model.ForumId);
+            return new Post
+            {
+                Title = model.Title,
+                Content = model.Content,
+                Created = DateTime.Now,
+                User = user,
+                Forum = forum
+            };
         }
 
         private IEnumerable<PostReplyModel> BuildPostReplies(IEnumerable<PostReply> replies)
@@ -52,9 +102,9 @@ namespace CasualClans.Controllers
                 Created = reply.Created,
                 ReplyContent = reply.Content
             });
-            
 
-            
+
+
         }
     }
 }
