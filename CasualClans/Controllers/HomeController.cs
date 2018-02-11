@@ -17,7 +17,7 @@ namespace CasualClans.Controllers
     {
         private readonly IPost _postService;
 
-        protected HomeController(IPost postService)
+        public HomeController(IPost postService)
         {
             _postService = postService;
         }
