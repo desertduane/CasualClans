@@ -23,4 +23,8 @@
     <ProjectReference Include="..\CasualClans.Service\CasualClans.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\user\" />
+  </ItemGroup>
+
 </Project>
