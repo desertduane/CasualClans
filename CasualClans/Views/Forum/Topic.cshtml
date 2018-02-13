@@ -1,11 +1,37 @@
 ﻿@model CasualClans.Models.Forum.ForumTopicModel
 
-<h1>Welcome to the @Model.Forum.Name Forum</h1>
 
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <span>@Model.Forum.Name Forum</span>
+        @if (Context.User.Identity.IsAuthenticated)
+        {
+            <span id="headingButton">
+                <a asp-controller="Post" 
+                   asp-action="Create" 
+                   asp-route-id="@Model.Forum.Id" class="btn btn-newPost">
+                    Create Post
+                </a>
+            </span>
+        }
+        <form asp-controller="Forum" asp-action="Search" method="post">
+            <div class="searchForm">
+                <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)" />
+                <button type="submit" class="btn buttonSearch">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
+            <input asp-for="Forum.Id" name="id" type="hidden" />
+        </form>
+    </div>
+</div>
+
+<h1>Welcome to the @Model.Forum.Name Forum</h1>
 <span id="headingButton">
     <a asp-controller="Post"
        asp-action="Create"
-       asp-route-id=@Model.Forum.Id class="btn btn-newPsot">
+       asp-route-id=@Model.Forum.Id class="btn btn-newPost">
         Create Post
     </a>
 </span>
