@@ -15,15 +15,17 @@ namespace CasualClans.Controllers
         private readonly IForum _forumService;
         private readonly IPost _postService;
 
-        public ForumController(IForum forumService)
+        public ForumController(IForum forumService, IPost postService)
         {
             _forumService = forumService;
+            _postService = postService;
         }
 
         public IActionResult Index()
         {
             var forums = _forumService.GetAll()
-                .Select(forum => new ForumListingModel {
+                .Select(forum => new ForumListingModel
+                {
                     Id = forum.Id,
                     Name = forum.Title,
                     Description = forum.Description
@@ -37,10 +39,16 @@ namespace CasualClans.Controllers
             return View(model);
         }
 
-        public IActionResult Topic(int Id)
+        public IActionResult Topic(int Id, string searchQuery)
         {
             var forum = _forumService.GetById(Id);
-            var posts = forum.Posts;
+            var posts = new List<Post>();
+
+            if (String.IsNullOrEmpty(searchQuery))
+            {
+                posts = _postService.GetFilteredPosts(Id, searchQuery).ToList();
+            }
+            posts = forum.Posts.ToList();
 
             var postListings = posts.Select(post => new PostListingModel
             {
@@ -59,6 +67,12 @@ namespace CasualClans.Controllers
                 Forum = BuildForumListing(forum)
             };
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Search(int Id, string searchQuery)
+        {
+            return RedirectToAction("Topic", new { Id, searchQuery });
         }
 
         private ForumListingModel BuildForumListing(Post post)
