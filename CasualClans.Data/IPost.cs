@@ -11,6 +11,7 @@ namespace CasualClans.Data
         Post GetById(int Id);
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery);
+        IEnumerable<Post> GetFilteredPosts(string searchQuery);
         IEnumerable<Post> GetPostsByForum(int Id);
         IEnumerable<Post> GetLatestPosts(int n);
 
