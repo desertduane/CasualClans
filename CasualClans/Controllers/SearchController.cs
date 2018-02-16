@@ -6,6 +6,7 @@ using CasualClans.Data;
 using CasualClans.Data.Models;
 using CasualClans.Models.Forum;
 using CasualClans.Models.Post;
+using CasualClans.Models.Search;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CasualClans.Controllers
@@ -23,7 +24,9 @@ namespace CasualClans.Controllers
         {
             var posts = _postService.GetFilteredPosts(searchQuery);
 
-            var postlistings = posts.Select(post => new PostListingModel
+            var areNoResults = (!string.IsNullOrEmpty(searchQuery) && !posts.Any());
+
+            var postListings = posts.Select(post => new PostListingModel
             {
                 Id = post.Id,
                 AuthorId = post.User.Id,
@@ -34,6 +37,13 @@ namespace CasualClans.Controllers
                 RepliesCount = post.Replies.Count(),
                 Forum = BuildForumListing(post)
             });
+
+            var model = new SearchResultModel
+            {
+                Posts = postListings,
+                SearchQuery = searchQuery,
+                EmptySearchResult = areNoResults
+            };
         }
 
         private ForumListingModel BuildForumListing(Post post)
