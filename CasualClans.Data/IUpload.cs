@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CasualClans.Data
 {
-    interface IUpload
+    public interface IUpload
     {
     }
 }

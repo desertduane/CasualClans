@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CasualClans.Data;
 using CasualClans.Data.Models;
+using CasualClans.Models.ApplicationUser;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,9 +23,23 @@ namespace CasualClans.Controllers
             _uploadService = uploadService;
         }
 
-        public IActionResult Detail()
+        public IActionResult Detail(string Id)
         {
-            return View();
+            var user = _userService.GetById(Id);
+            var userRoles = _userManager.GetRolesAsync(user).Result;
+
+            var model = new ProfileModel()
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                UserRating = user.Rating.ToString(),
+                Email = user.Email,
+                ProfileImageUrl = user.ProfileImageUrl,
+                MemberSince = user.MemberSince,
+                IsAdmin = userRoles.Contains("Admin")
+            };
+
+            return View(model);
         }
     }
 }
