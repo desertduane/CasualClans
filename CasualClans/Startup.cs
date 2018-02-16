@@ -39,6 +39,8 @@ namespace CasualClans
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
+            services.AddScoped<IUpload, UploadService>();
+            services.AddScoped<IApplicationUser, ApplicationUserService>();
             services.AddTransient<DataSeeder>();
             services.AddMvc();
         }

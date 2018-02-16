@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CasualClans.Service
 {
-    class UploadService : IUpload
+    public class UploadService : IUpload
     {
     }
 }
