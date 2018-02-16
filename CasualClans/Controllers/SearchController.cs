@@ -44,6 +44,8 @@ namespace CasualClans.Controllers
                 SearchQuery = searchQuery,
                 EmptySearchResult = areNoResults
             };
+
+            return View(model);
         }
 
         private ForumListingModel BuildForumListing(Post post)
