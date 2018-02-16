@@ -58,16 +58,13 @@ namespace CasualClans.Service
         }
 
 
-        public IEnumerable<Post> GetFilteredPosts(int Id, string searchQuery)
+        public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
         {
-            
-            var forum = _context.Forums.Find(Id);
-
             return string.IsNullOrEmpty(searchQuery)
                 ? forum.Posts
                 : forum.Posts.Where(post
-                => post.Title.Contains(searchQuery)
-                || post.Content.Contains(searchQuery));
+                     => post.Title.Contains(searchQuery)
+                     || post.Content.Contains(searchQuery));
         }
 
         public IEnumerable<Post> GetLatestPosts(int n)
