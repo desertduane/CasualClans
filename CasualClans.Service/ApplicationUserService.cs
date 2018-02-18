@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CasualClans.Service
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private readonly ApplicationDbContext _context;
 
@@ -19,7 +19,7 @@ namespace CasualClans.Service
 
         public IEnumerable<ApplicationUser> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.ApplicationUsers;
         }
 
         public ApplicationUser GetById(string Id)
