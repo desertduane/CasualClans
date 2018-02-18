@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CasualClans.Data;
 using CasualClans.Data.Models;
 using CasualClans.Models.ApplicationUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +41,23 @@ namespace CasualClans.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            //connect to azure storage container
+            //Get blob container
+
+            //parse content dispostion response header
+
+            //get reference to block blob
+            //on that block blob upload file
+
+            //set users profile image to the URI
+            //redirect to users profile
         }
     }
 }
