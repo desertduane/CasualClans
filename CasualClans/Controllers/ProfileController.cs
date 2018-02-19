@@ -20,11 +20,15 @@ namespace CasualClans.Controllers
         private readonly IUpload _uploadService;
         private readonly IConfiguration _configuration;
 
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService)
+        public ProfileController(UserManager<ApplicationUser> userManager,
+            IApplicationUser userService,
+            IUpload uploadService, 
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _userService = userService;
             _uploadService = uploadService;
+            _configuration = configuration;
         }
 
         public IActionResult Detail(string Id)
@@ -61,6 +65,11 @@ namespace CasualClans.Controllers
 
             var blockBlob = container.GetBlockBlobReference(filename);
 
+            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
+
+            await _userService.SetProfileImage(userId, blockBlob.Uri);
+
+            return RedirectToAction("Detail", "Profile", new { id = userId });
             //connect to azure storage container
             //Get blob container
 
