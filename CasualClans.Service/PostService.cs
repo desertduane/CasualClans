@@ -25,9 +25,10 @@ namespace CasualClans.Service
 
         }
 
-        public Task AddReply(PostReply reply)
+        public async Task AddReply(PostReply reply)
         {
-            throw new NotImplementedException();
+            _context.PostReplies.Add(reply);
+            await _context.SaveChangesAsync();
         }
 
         public Task Delete(int Id)
