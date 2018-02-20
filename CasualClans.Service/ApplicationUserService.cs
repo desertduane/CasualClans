@@ -28,9 +28,24 @@ namespace CasualClans.Service
                 user => user.Id == Id);
         }
 
-        public Task IncrementRating(string Id, Type type)
+        public async Task IncrementRating(string userId, Type type)
         {
-            throw new NotImplementedException();
+            var user = GetById(userId);
+            user.Rating = CalculateUserRating(type, user.Rating);
+            await _context.SaveChangesAsync();
+        }
+
+        private int CalculateUserRating(Type type, int userRating)
+        {
+            var inc = 0;
+
+            if (type == typeof(Post))
+                inc = 1;
+            
+            if (type == typeof(PostReply))
+                inc = 3;
+
+            return userRating = inc;
         }
 
         public async Task SetProfileImage(string Id, Uri uri)

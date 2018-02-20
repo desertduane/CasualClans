@@ -12,7 +12,7 @@ namespace CasualClans.Data
         IEnumerable<ApplicationUser> GetAll();
 
         Task SetProfileImage(string Id, Uri uri);
-        Task IncrementRating(string Id, Type type);
+        Task UpdateUserRating(string Id, Type type);
 
     }
 }

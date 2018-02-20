@@ -14,11 +14,15 @@ namespace CasualClans.Controllers
     {
         private readonly IPost _postService;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IApplicationUser _userService;
 
-        public ReplyController(IPost postService, UserManager<ApplicationUser> userManager)
+        public ReplyController(IPost postService,
+            UserManager<ApplicationUser> userManager,
+            IApplicationUser userService)
         {
             _postService = postService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public async Task<IActionResult> Create(int Id)
@@ -56,6 +60,7 @@ namespace CasualClans.Controllers
             var reply = BuildReply(model, user);
 
             await _postService.AddReply(reply);
+            await _userService.UpdateUserRating(userId, typeof(PostReply));
 
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }

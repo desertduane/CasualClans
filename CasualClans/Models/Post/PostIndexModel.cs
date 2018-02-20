@@ -1,4 +1,4 @@
-﻿using CasualClans.Models.Forum.Reply;
+﻿using CasualClans.Models.Reply;
 using System;
 using System.Collections.Generic;
 using System.Linq;
