@@ -28,10 +28,10 @@ namespace CasualClans.Service
                 user => user.Id == Id);
         }
 
-        public async Task IncrementRating(string userId, Type type)
+        public async Task UpdateUserRating(string userId, Type type)
         {
             var user = GetById(userId);
-            user.Rating = CalculateUserRating(type, user.Rating);
+            user.Rating += CalculateUserRating(type, user.Rating);
             await _context.SaveChangesAsync();
         }
 

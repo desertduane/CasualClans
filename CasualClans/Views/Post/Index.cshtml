@@ -23,6 +23,7 @@
                 @Model.AuthorName
             </a>
             <span class="postDate">@Model.Created</span>
+            <div class="postDate">Rating: @Model.AuthorRating</div>
             @if (Model.IsAuthorAdmin)
             {
                 <span class="isAdmin smaller"></span>
@@ -57,13 +58,13 @@
                     <a asp-controller="Profile" asp-action="Detail" asp-route-id="@reply.AuthorId">
                         @reply.AuthorName
                     </a>
+                    <div class="postDate">Rating: @Model.AuthorRating</div>
                     @if (reply.IsAuthorAdmin)
                     {
                         <div class="isAdmin smaller">Admin</div>
-                        <br />
 
                     }
-                    <span>@reply.Created</span>
+                    <span class="postDate">@reply.Created</span>
                 </div>
                 <div class="col-md-9 replyContentContainer">
                     <div class="postContent">
