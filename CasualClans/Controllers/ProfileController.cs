@@ -57,7 +57,7 @@ namespace CasualClans.Controllers
 
             var connectionString = _configuration.GetConnectionString("AzureStorageAccount");
 
-            var container = _uploadService.GetBlobContainer(connectionString);
+            var container = _uploadService.GetBlobContainer(connectionString, "profile-images");
 
             var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
 
