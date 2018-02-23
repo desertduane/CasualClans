@@ -1,22 +1,59 @@
 ﻿@model CasualClans.Models.Forum.ForumIndexModel
 
-<h1>Forums</h1>
 
-<table class="table table-hover" id="forumIndexTable">
-    <tbody>
-        @foreach ( var forum in Model.ForumList)
-        {
-            <tr>
-                <td>
-                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">
-                    @forum.Name
-                    </a>
-                </td>
-                <td>
-                    @forum.Description
-                </td>
-            </tr>
 
-        }
-    </tbody>
-</table>
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">Browse Forums</div>
+        <div class="sectionDescription">
+            <p>Welcome to <strong>Causal Clans Community</strong></p>
+            <div>
+                @if (!Context.User.Identity.IsAuthenticated)
+                {
+                    <span>Please <a asp-controller="Account" asp-action="Register">Register</a> to create a post</span>
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row" id="forumIndexContent">
+        <table class="table table-hover" id="forumIndexTable">
+            <tbody>
+                @foreach(var forum in Model.ForumList)
+                {
+                    <tr>
+                        <td>
+                            <div class="forumLogo" style="background-image: url(@forum.ImageUrl)"></div>
+                            <div class="forumData">
+                                <div class="forumTitle">
+                                    <a asp-controller="Forum" asp-action="Topic" asp-route-id="@forum.Id">@forum.Name</a>
+                                </div>
+                                <div class="forumSubTitle">
+                                    @if (forum.HasRecentPost)
+                                    {
+                                        <div class="hasRecentPost">Hot!</div>
+
+                                    }
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="forumPostCount">
+                                @forum.NumberOfPosts Posts
+                            </div>
+                            <div class="forumMemberCount">
+                                @forum.NumberOfUsers Users
+                            </div>
+                        </td>
+                        <td>
+                            <div class="forumDescription">
+                                @forum.Description
+                            </div>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

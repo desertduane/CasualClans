@@ -81,5 +81,26 @@ namespace CasualClans.Controllers
             //set users profile image to the URI
             //redirect to users profile
         }
+
+        public IActionResult Index()
+        {
+            var profiles = _userService.GetAll()
+                .OrderByDescending(user => user.Rating)
+                .Select(u => new ProfileModel
+                {
+                    Email = u.Email,
+                    UserName = u.UserName,
+                    ProfileImageUrl = u.ProfileImageUrl,
+                    UserRating = u.Rating.ToString(),
+                    MemberSince = u.MemberSince
+                });
+
+            var model = new ProfileListModel
+            {
+                Profiles = profiles
+            };
+
+            return View(model);
+        }
     }
 }
