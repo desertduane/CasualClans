@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using CasualClans.Data;
 using CasualClans.Data.Models;
 using CasualClans.Models.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CasualClans.Controllers
 {
+    [Authorize]
     public class ReplyController : Controller
     {
         private readonly IPost _postService;

@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans", "CasualClans\CasualClans.csproj", "{8749000B-72F4-423C-B728-3A0DF354B88B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasualClans", "CasualClans\CasualClans.csproj", "{8749000B-72F4-423C-B728-3A0DF354B88B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans.Data", "CasualClans.Data\CasualClans.Data.csproj", "{CE15AE90-49C0-486B-94BF-A4E29527ABC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasualClans.Data", "CasualClans.Data\CasualClans.Data.csproj", "{CE15AE90-49C0-486B-94BF-A4E29527ABC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans.Service", "CasualClans.Service\CasualClans.Service.csproj", "{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasualClans.Service", "CasualClans.Service\CasualClans.Service.csproj", "{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasualClans.tests", "CasualClans.tests\CasualClans.tests.csproj", "{502F7F83-37A0-4BBB-9028-9BBDAA40366A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B7CE33-51EC-47E5-AEB7-98AA1DFD6E93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{502F7F83-37A0-4BBB-9028-9BBDAA40366A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{502F7F83-37A0-4BBB-9028-9BBDAA40366A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{502F7F83-37A0-4BBB-9028-9BBDAA40366A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{502F7F83-37A0-4BBB-9028-9BBDAA40366A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

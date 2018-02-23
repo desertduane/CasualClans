@@ -8,9 +8,11 @@ using CasualClans.Models.Reply;
 using CasualClans.Models.Post;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasualClans.Controllers
 {
+    
     public class PostController : Controller
     {
         private readonly IPost _postService;
@@ -54,6 +56,7 @@ namespace CasualClans.Controllers
             return View(model);
         }
 
+        [Authorize]
         public IActionResult Create(int Id)
         {
             //Id is Forum.Id
@@ -70,6 +73,7 @@ namespace CasualClans.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddPost(NewPostModel model)
         {
             var userId = _userManager.GetUserId(User);
@@ -113,6 +117,7 @@ namespace CasualClans.Controllers
 
 
         }
+
         private bool IsAuthorAdmin(ApplicationUser user)
         {
             return _userManager.GetRolesAsync(user)

@@ -1,6 +1,0 @@
-﻿{
-  "ConnectionStrings": {
-    "AzureStorageAccount": "DefaultEndpointsProtocol=https;AccountName=casualclans;AccountKey=N0I8rMgVHayMs+Ui5ooQA2/lopA4k3dCSVy1fuT++AC8wR5TRRxJY6fYm4loY2HAaQjxzvvrYXwzyAgXzdR3lw==;EndpointSuffix=core.windows.net"
-  }
-
-}

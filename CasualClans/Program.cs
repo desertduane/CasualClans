@@ -21,7 +21,7 @@ namespace CasualClans
             WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((builderContext, config) => {
                 IHostingEnvironment env = builderContext.HostingEnvironment;
-                config.AddJsonFile("storageSettings.json", optional: false, reloadOnChange: true);
+                config.AddJsonFile("appSettings.json", optional: false, reloadOnChange: true);
             })
                 .UseStartup<Startup>()
                 .Build();
