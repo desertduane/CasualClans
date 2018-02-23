@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CasualClans.Data;
 using CasualClans.Data.Models;
 using CasualClans.Models.ApplicationUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace CasualClans.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -82,6 +84,7 @@ namespace CasualClans.Controllers
             //redirect to users profile
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var profiles = _userService.GetAll()

@@ -8,9 +8,11 @@ using CasualClans.Models.Reply;
 using CasualClans.Models.Post;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasualClans.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private readonly IPost _postService;
