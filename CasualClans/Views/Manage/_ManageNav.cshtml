@@ -1,5 +1,5 @@
 ﻿@using CasualClans.Views.Manage
-@inject SignInManager<ApplicationUser> SignInManager
+@inject SignInManager<CasualClans.Data.Models.ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
